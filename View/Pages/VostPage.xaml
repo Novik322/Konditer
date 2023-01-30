@@ -1,0 +1,39 @@
+﻿<Page x:Class="Konditer_FigmaProject.View.Pages.VostPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Konditer_FigmaProject.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="836" d:DesignWidth="382"
+      Title="Восстановление пароля">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Image Margin="20" Source="/View/Picture/logo.png" />
+        <TextBlock Text="Восстановление пароля" Foreground="White" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
+        <TextBlock Text="Ввдеите почту:" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBox Grid.Row="3" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+
+        <Button Grid.Row="7" Content="Отправить" FontSize="20" Style="{StaticResource FlatButtonStyle}"/>
+        <TextBlock Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15" FontSize="18" FontWeight="SemiBold" TextWrapping="Wrap">
+        <Hyperlink>
+            У вас уже есть аккаунт? Войти!
+        </Hyperlink>
+        </TextBlock>
+
+
+    </Grid>
+</Page>

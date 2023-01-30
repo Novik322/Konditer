@@ -1,0 +1,56 @@
+﻿<Page x:Class="Konditer_FigmaProject.View.Pages.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Konditer_FigmaProject.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="836" d:DesignWidth="382"
+      Title="RegistrationPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Image Margin="20" Source="/View/Picture/logo.png" />   
+        <TextBlock Text="Регистрация" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" Grid.Row="1" Foreground="White"/>
+        <TextBlock Text="Имя*:" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBox Grid.Row="3" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBox Grid.Row="5" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBlock Text="Фамилия*:" Grid.Row="4" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBox Grid.Row="7" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBlock Text="Email(почта)*:" Grid.Row="6" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBox Grid.Row="9" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBlock Text="Телефон*:" Grid.Row="8" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBox Grid.Row="11" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBlock Text="Введите пароль*:" Grid.Row="10" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBox Grid.Row="13" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBlock Text="Повторный ввод пароля*:" Grid.Row="12" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+
+
+        <Button Grid.Row="14" Content="Сменить пароль" FontSize="20" Style="{StaticResource FlatButtonStyle}"/>
+        <TextBlock Grid.Row="15" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap">
+<Hyperlink>
+            У вас уже есть аккаунт? Войти!
+        </Hyperlink>
+        </TextBlock>
+
+
+    </Grid>
+</Page>
