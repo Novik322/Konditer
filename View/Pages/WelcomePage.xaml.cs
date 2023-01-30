@@ -1,6 +1,4 @@
-﻿using Konditer_FigmaProject.AppData;
-using Konditer_FigmaProject.View.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Konditer_FigmaProject
+namespace Konditer_FigmaProject.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для WelcomePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WelcomePage : Page
     {
-        public MainWindow()
+        public WelcomePage()
         {
             InitializeComponent();
-            AppFrame.Main = FrameGlav;
-            AuthPage authPage = new AuthPage();
-            FrameGlav.Navigate(authPage);
-
         }
     }
 }

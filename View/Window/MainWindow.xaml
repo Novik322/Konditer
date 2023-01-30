@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Konditer_FigmaProject"
         mc:Ignorable="d"
-        Title="Главная" Height="844" Width="390" WindowStartupLocation="CenterScreen" Topmost="True" WindowStyle="None" >
+        Title="Кондитерская" Height="844" Width="390" WindowStartupLocation="CenterScreen" Topmost="True" WindowStyle="None" >
     <Grid>
         <Image Source="/View/Picture/zadnfon.jpg" Stretch="UniformToFill" />
         <Frame Name="FrameGlav" NavigationUIVisibility="Hidden"/>

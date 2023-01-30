@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Konditer_FigmaProject.AppData;
+using Konditer_FigmaProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,49 @@ namespace Konditer_FigmaProject.View.Pages
         public AuthPage()
         {
             InitializeComponent();
+        }
+
+        private void Enter()
+        {
+            try
+            {
+                var user = AppConnect.context.Stuff.FirstOrDefault(i => i.email == emailTb.Text && i.password == passPb.Password);
+                if (user == null)
+                {
+                    MessageBox.Show("Данного пользователя не существует!", "Ошибка при авторизации!",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    switch (user.permission)
+                    {
+                        case 1:
+                            AppFrame.Main.Navigate(new WelcomePage());
+                            break;
+                        case 2:
+                            AppFrame.Main.Navigate(new WelcomePage());
+                            break;
+                        case 3:
+                            MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+                            break;
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Ошибка" + Ex.Message.ToString() + "Критическая работа приложения!",
+                    "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void EnterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Enter();
+        }
+
+        private void RegBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.Main.Navigate(new RegistrationPage());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Konditer_FigmaProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,69 @@ namespace Konditer_FigmaProject.View.Pages
         public RegistrationPage()
         {
             InitializeComponent();
+        }
+
+        private void Reg()
+        {
+            if (string.IsNullOrEmpty(emailTb.Text) && string.IsNullOrEmpty(phoneTb.Text) && string.IsNullOrEmpty(PassTb1.Text) && string.IsNullOrEmpty(PassTb2.Password) && string.IsNullOrEmpty(firstTb.Text) && string.IsNullOrEmpty(lastTb.Text))
+            {
+                MessageBox.Show("Не все поля заполнены!");
+            }
+            else if (string.IsNullOrEmpty(emailTb.Text))
+            {
+                MessageBox.Show("Не все поля заполнены!");
+            }
+            else
+            {
+                if (AppConnect.context.Stuff.Count(x => x.email == emailTb.Text) > 0)
+                {
+                    MessageBox.Show("Пользователь с таким логином уже зарегистрирован!",
+                        "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                try
+                {
+                    Stuff userObj = new Stuff()
+                    {
+                        email = emailTb.Text,
+                        phone = phoneTb.Text,
+                        lastname = lastTb.Text,
+                        firstname = firstTb.Text,
+                        password = PassTb1.Text,
+                        permission = 1
+                    };
+                    AppConnect.context.Stuff.Add(userObj);
+                    AppConnect.context.SaveChanges();
+                    MessageBox.Show("Регистрация прошла успешно!",
+                        "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка при добавлении данных!",
+                        "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void regBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Reg();
+        }
+
+        private void PassTb2_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (PassTb2.Password != PassTb1.Text)
+            {
+                regBtn.IsEnabled = false;
+                PassTb2.Background = Brushes.LightCoral;
+                PassTb2.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                regBtn.IsEnabled = true;
+                PassTb2.Background = Brushes.LightGreen;
+                PassTb2.BorderBrush = Brushes.Green;
+            }
         }
     }
 }

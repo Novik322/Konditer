@@ -31,22 +31,22 @@
         <Image Margin="20" Source="/View/Picture/logo.png" />   
         <TextBlock Text="Регистрация" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" Grid.Row="1" Foreground="White"/>
         <TextBlock Text="Имя*:" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
-        <TextBox Grid.Row="3" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
-        <TextBox Grid.Row="5" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBox x:Name="lastTb" Grid.Row="3" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBox x:Name="firstTb" Grid.Row="5" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
         <TextBlock Text="Фамилия*:" Grid.Row="4" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
-        <TextBox Grid.Row="7" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBox Grid.Row="7" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20" x:Name="emailTb"/>
         <TextBlock Text="Email(почта)*:" Grid.Row="6" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
-        <TextBox Grid.Row="9" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBox x:Name="phoneTb" Grid.Row="9" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
         <TextBlock Text="Телефон*:" Grid.Row="8" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
-        <TextBox Grid.Row="11" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <TextBox Grid.Row="11" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20" x:Name="PassTb1"/>
         <TextBlock Text="Введите пароль*:" Grid.Row="10" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
-        <TextBox Grid.Row="13" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
+        <PasswordBox x:Name="PassTb2" Grid.Row="13" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20" PasswordChanged="PassTb2_PasswordChanged"/>
         <TextBlock Text="Повторный ввод пароля*:" Grid.Row="12" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
 
 
-        <Button Grid.Row="14" Content="Сменить пароль" FontSize="20" Style="{StaticResource FlatButtonStyle}"/>
+        <Button x:Name="regBtn" Click="regBtn_Click"  Grid.Row="14" Content="Завершить регистрацию" FontSize="20" Style="{StaticResource FlatButtonStyle}"/>
         <TextBlock Grid.Row="15" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap">
-<Hyperlink>
+<Hyperlink NavigateUri="AuthPage.xaml">
             У вас уже есть аккаунт? Войти!
         </Hyperlink>
         </TextBlock>
