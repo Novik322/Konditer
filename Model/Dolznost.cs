@@ -12,17 +12,16 @@ namespace Konditer_FigmaProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Stuff
+    public partial class Dolznost
     {
-        public int id { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public string lastname { get; set; }
-        public string firstname { get; set; }
-        public string phone { get; set; }
-        public int permission { get; set; }
-        public int doljnsot { get; set; }
+        public Dolznost()
+        {
+            this.Stuff = new HashSet<Stuff>();
+        }
     
-        public virtual Dolznost Dolznost { get; set; }
+        public int idDolznost { get; set; }
+        public string nameDolznost { get; set; }
+    
+        public virtual ICollection<Stuff> Stuff { get; set; }
     }
 }

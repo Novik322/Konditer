@@ -21,6 +21,13 @@
           <Property Name="DateOtgruz" Type="date" Nullable="false" />
           <Property Name="IdOptSalers" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Dolznost">
+          <Key>
+            <PropertyRef Name="idDolznost" />
+          </Key>
+          <Property Name="idDolznost" Type="int" Nullable="false" />
+          <Property Name="nameDolznost" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
         <EntityType Name="OptSalers">
           <Key>
             <PropertyRef Name="IdOptSalers" />
@@ -47,6 +54,7 @@
           <Property Name="firstname" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="permission" Type="int" Nullable="false" />
+          <Property Name="doljnsot" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -139,8 +147,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Stuff_Dolznost">
+          <End Role="Dolznost" Type="Self.Dolznost" Multiplicity="1" />
+          <End Role="Stuff" Type="Self.Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznost">
+              <PropertyRef Name="idDolznost" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="doljnsot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище CondIzd_SamarinRModelContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolznost" EntityType="Self.Dolznost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OptSalers" EntityType="Self.OptSalers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stuff" EntityType="Self.Stuff" Schema="dbo" store:Type="Tables" />
@@ -167,6 +188,10 @@
           <AssociationSet Name="FK_OptSalers_TypeOptSalers" Association="Self.FK_OptSalers_TypeOptSalers">
             <End Role="TypeOptSalers" EntitySet="TypeOptSalers" />
             <End Role="OptSalers" EntitySet="OptSalers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuff_Dolznost" Association="Self.FK_Stuff_Dolznost">
+            <End Role="Dolznost" EntitySet="Dolznost" />
+            <End Role="Stuff" EntitySet="Stuff" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -334,6 +359,11 @@
             <End Role="OptSalers" EntitySet="OptSalers" />
           </AssociationSet>
           <EntitySet Name="Stuff" EntityType="CondIzd_SamarinRModel.Stuff" />
+          <EntitySet Name="Dolznost" EntityType="CondIzd_SamarinRModel.Dolznost" />
+          <AssociationSet Name="FK_Stuff_Dolznost" Association="CondIzd_SamarinRModel.FK_Stuff_Dolznost">
+            <End Role="Dolznost" EntitySet="Dolznost" />
+            <End Role="Stuff" EntitySet="Stuff" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Stuff">
           <Key>
@@ -346,7 +376,29 @@
           <Property Name="firstname" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="permission" Type="Int32" Nullable="false" />
+          <Property Name="doljnsot" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dolznost" Relationship="CondIzd_SamarinRModel.FK_Stuff_Dolznost" FromRole="Stuff" ToRole="Dolznost" />
         </EntityType>
+        <EntityType Name="Dolznost">
+          <Key>
+            <PropertyRef Name="idDolznost" />
+          </Key>
+          <Property Name="idDolznost" Type="Int32" Nullable="false" />
+          <Property Name="nameDolznost" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stuff" Relationship="CondIzd_SamarinRModel.FK_Stuff_Dolznost" FromRole="Dolznost" ToRole="Stuff" />
+        </EntityType>
+        <Association Name="FK_Stuff_Dolznost">
+          <End Type="CondIzd_SamarinRModel.Dolznost" Role="Dolznost" Multiplicity="1" />
+          <End Type="CondIzd_SamarinRModel.Stuff" Role="Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznost">
+              <PropertyRef Name="idDolznost" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="doljnsot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -425,6 +477,7 @@
           <EntitySetMapping Name="Stuff">
             <EntityTypeMapping TypeName="CondIzd_SamarinRModel.Stuff">
               <MappingFragment StoreEntitySet="Stuff">
+                <ScalarProperty Name="doljnsot" ColumnName="doljnsot" />
                 <ScalarProperty Name="permission" ColumnName="permission" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
@@ -432,6 +485,14 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolznost">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel.Dolznost">
+              <MappingFragment StoreEntitySet="Dolznost">
+                <ScalarProperty Name="nameDolznost" ColumnName="nameDolznost" />
+                <ScalarProperty Name="idDolznost" ColumnName="idDolznost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

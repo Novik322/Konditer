@@ -33,5 +33,6 @@ namespace Konditer_FigmaProject.Model
         public DbSet<Units> Units { get; set; }
         public DbSet<ViewPack> ViewPack { get; set; }
         public DbSet<Stuff> Stuff { get; set; }
+        public DbSet<Dolznost> Dolznost { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cc84959fc8f242c1a2e0fb6a9945cb16" Name="Diagram1">
+      <Diagram DiagramId="cc84959fc8f242c1a2e0fb6a9945cb16" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="CondIzd_SamarinRModel.Account" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CondIzd_SamarinRModel.OptSalers" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="CondIzd_SamarinRModel.Products" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
@@ -18,6 +18,8 @@
         <AssociationConnector Association="CondIzd_SamarinRModel.FK_Account_ViewPack" ManuallyRouted="false" />
         <AssociationConnector Association="CondIzd_SamarinRModel.FK_OptSalers_TypeOptSalers" ManuallyRouted="false" />
         <EntityTypeShape EntityType="CondIzd_SamarinRModel.Stuff" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CondIzd_SamarinRModel.Dolznost" Width="1.5" PointX="5.125" PointY="13.375" />
+        <AssociationConnector Association="CondIzd_SamarinRModel.FK_Stuff_Dolznost" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

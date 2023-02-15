@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Konditer_FigmaProject.AppData;
+using Konditer_FigmaProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,41 @@ namespace Konditer_FigmaProject.View.Pages
         public VostPage()
         {
             InitializeComponent();
+        }
+
+        private void EnterVost_Click(object sender, RoutedEventArgs e)
+        {
+            Enter();
+        }
+
+        private void Enter()
+        {
+            try
+            {
+                var user = AppConnect.context.Stuff.FirstOrDefault(i => i.email == EmailVostPassTb.Text);
+                if (user == null)
+                {
+                    MessageBox.Show("Данного пользователя не существует! Убедитесь в правильности ввода почты и повторите ввод данных снова!", "Предупреждение",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    switch (user.permission)
+                    {
+                        case 1:
+                            AppFrame.Main.Navigate(new NewPassPage());
+                            break;
+                        case 2:
+                            MessageBox.Show("Данные не обнаружены. Убедитесь в правильности ввода Email!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+                            break;
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Ошибка" + Ex.Message.ToString() + "Критическая работа приложения!",
+                    "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

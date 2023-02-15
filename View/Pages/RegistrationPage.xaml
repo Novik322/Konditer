@@ -8,7 +8,7 @@
       d:DesignHeight="836" d:DesignWidth="382"
       Title="RegistrationPage">
 
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*" />
             <RowDefinition Height="1*" />
