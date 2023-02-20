@@ -8,7 +8,7 @@
       d:DesignHeight="836" d:DesignWidth="382"
       Title="WelcomePage">
 
-    <Grid Margin="10">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="125" />
             <RowDefinition Height="200" />

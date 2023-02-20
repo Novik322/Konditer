@@ -8,7 +8,7 @@
       d:DesignHeight="836" d:DesignWidth="382"
       Title="Восстановление пароля">
 
-    <Grid Margin="10">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*" />
             <RowDefinition Height="1*" />
@@ -27,7 +27,7 @@
         <TextBlock Text="Ввдеите почту:" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
         <TextBox x:Name="EmailVostPassTb" Grid.Row="3" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
 
-        <Button Name="EnterVost" Click="EnterVost_Click"  Grid.Row="7" Content="Отправить" FontSize="20" Style="{StaticResource FlatButtonStyle}"/>
+        <Button Name="EnterVost" Click="EnterVost_Click"  Grid.Row="7" Content="Отправить" FontSize="20" Style="{DynamicResource ButtonStyle1}"/>
         <TextBlock Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15" FontSize="18" FontWeight="SemiBold" TextWrapping="Wrap">
         <Hyperlink NavigateUri="AuthPage.xaml" >
             У вас уже есть аккаунт? Войти!

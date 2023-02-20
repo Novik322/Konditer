@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="836" d:DesignWidth="382"
       Title="AuthPage">
-    <Grid Margin="10">
+    
+    <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*" />
             <RowDefinition Height="1*" />
@@ -21,16 +22,16 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Image Margin="20" Source="/View/Picture/logo.png" />
+        <Image Margin="20" Source="/View/Picture/logo.png"/>
         <TextBlock Text="Ввдеите почту:" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
         <TextBox x:Name="emailTb" Grid.Row="3" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
         <PasswordBox x:Name="passPb" Grid.Row="5" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
         <TextBlock Text="Ввдеите пароль:" Grid.Row="4" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
 
 
-        <Button Name="EnterBtn" Click="EnterBtn_Click" Grid.Row="7" Content="Войти" FontSize="20" Style="{StaticResource FlatButtonStyle}"/>
-        <Button Name="RegBtn" Click="RegBtn_Click"  Grid.Row="8" Content="Регистрация" FontSize="20" Style="{StaticResource FlatButtonStyle}"/>
-        <TextBlock Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap">
+        <Button Name="EnterBtn" Click="EnterBtn_Click" Grid.Row="7" Content="Войти" FontSize="20" Style="{DynamicResource ButtonStyle1}"/>
+        <Button Name="RegBtn" Click="RegBtn_Click"  Grid.Row="8" Content="Регистрация" FontSize="20" Style="{DynamicResource ButtonStyle1}"/>
+        <TextBlock Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15" FontSize="14" FontWeight="SemiBold" TextWrapping="Wrap">
         <Hyperlink NavigateUri="VostPage.xaml">
             Не можете войти? Восстановите пароль!
         </Hyperlink>

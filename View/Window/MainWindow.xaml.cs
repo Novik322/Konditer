@@ -30,5 +30,10 @@ namespace Konditer_FigmaProject
             FrameGlav.Navigate(authPage);
 
         }
+
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
     }
 }
