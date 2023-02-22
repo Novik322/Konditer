@@ -23,10 +23,10 @@
         </Grid.RowDefinitions>
 
         <Image Margin="20" Source="/View/Picture/logo.png"/>
-        <TextBlock Text="Ввдеите почту:" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBlock Text="Ввдеите почту:" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Foreground="black" FontWeight="Bold"/>
         <TextBox x:Name="emailTb" Grid.Row="3" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
         <PasswordBox x:Name="passPb" Grid.Row="5" Margin="10" BorderBrush="Black" BorderThickness="1" FontSize="20"/>
-        <TextBlock Text="Ввдеите пароль:" Grid.Row="4" VerticalAlignment="Center" FontSize="24" Foreground="White"/>
+        <TextBlock Text="Ввдеите пароль:" Grid.Row="4" VerticalAlignment="Center" FontSize="24" Foreground="black" FontWeight="Bold"/>
 
 
         <Button Name="EnterBtn" Click="EnterBtn_Click" Grid.Row="7" Content="Войти" FontSize="20" Style="{DynamicResource ButtonStyle1}"/>

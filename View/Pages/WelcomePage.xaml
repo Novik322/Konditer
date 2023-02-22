@@ -24,26 +24,9 @@
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="2" Margin="15" Source="/View/Picture/logo.png" />
-            <TextBlock Grid.Column="1" Text="Личный кабинет сотрудника" TextWrapping="Wrap"  VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="22"/>
+            <TextBlock Grid.Column="1" Text="Профиль" TextWrapping="Wrap"  VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="22"/>
             <TextBlock Grid.Column="0" Text="≡" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="50"/>
         </Grid>
-
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1.5*" />
-            </Grid.ColumnDefinitions>
-            
-            <Image Source="/View/Picture/people2.png" Grid.RowSpan="3"/>
-            <TextBlock Grid.Column="1" Text="{Binding Hellow}"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Name="DolznTbl"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Name="EmailTbl"/>
-
-        </Grid>
+        
     </Grid>
 </Page>

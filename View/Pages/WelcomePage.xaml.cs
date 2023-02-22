@@ -23,6 +23,7 @@ namespace Konditer_FigmaProject.View.Pages
         public WelcomePage()
         {
             InitializeComponent();
+
             AuthPage authPage = new AuthPage();
         }
     }

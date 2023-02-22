@@ -26,7 +26,6 @@ namespace Konditer_FigmaProject.View.Pages
         {
             InitializeComponent();
         }
-
         private void Enter()
         {
             try
@@ -42,12 +41,16 @@ namespace Konditer_FigmaProject.View.Pages
                     switch (user.permission)
                     {
                         case 1:
+                            MessageBox.Show(
+                                "Вы успешно вошли в систему!",
+                                "Добро пожаловать",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Asterisk,
+                                MessageBoxResult.OK,
+                                MessageBoxOptions.DefaultDesktopOnly);
                             AppFrame.Main.Navigate(new WelcomePage());
                             break;
                         case 2:
-                            AppFrame.Main.Navigate(new WelcomePage());
-                            break;
-                        case 3:
                             MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
                             break;
                     }

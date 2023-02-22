@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,7 +69,7 @@ namespace Konditer_FigmaProject.View.Pages
             }
         }
 
-        private void regBtn_Click(object sender, RoutedEventArgs e)
+        private void RegBtn_Click(object sender, RoutedEventArgs e)
         {
             Reg();
         }
@@ -86,6 +87,53 @@ namespace Konditer_FigmaProject.View.Pages
                 regBtn.IsEnabled = true;
                 PassTb2.Background = Brushes.LightGreen;
                 PassTb2.BorderBrush = Brushes.Green;
+            }
+        }
+
+        private void PhoneTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (phoneTb.Text.Length == 11)
+                {
+                    long number = long.Parse(phoneTb.Text);
+                    phoneTb.Text = string.Format("{0:+#(###)-###-##-##}", number);
+                }
+                else
+                {
+                    if (phoneTb.Text.Length == 16)
+                    {
+                        phoneTb.Text = "";
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void EmailTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (phoneTb.Text.Length == 11)
+                {
+                    long email = long.Parse(emailTb.Text);
+                    emailTb.Text = string.Format(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", email);
+                }
+                else
+                {
+                    if (phoneTb.Text.Length == 16)
+                    {
+
+                        phoneTb.Text = "";
+                    }
+                }
+            }
+            catch
+            {
+
             }
         }
     }
