@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Konditer_FigmaProject.AppData;
+using Konditer_FigmaProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +22,21 @@ namespace Konditer_FigmaProject.View.Pages
     /// </summary>
     public partial class WelcomePage : Page
     {
+        AuthPage authPage = new AuthPage();
         public WelcomePage()
         {
             InitializeComponent();
+            TableGrid.ItemsSource = AppConnect.context.Account.ToList();
+        }
 
-            AuthPage authPage = new AuthPage();
+        private void AddIzdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.Main.Navigate(new AddAccountPage());
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AppFrame.Main.Navigate(new WelcomePage());
         }
     }
 }

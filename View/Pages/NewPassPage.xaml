@@ -32,6 +32,7 @@
 
         <Button Name="SavePassBtn" Click="SavePassBtn_Click"  Grid.Row="8" Content="Сменить пароль" FontSize="20" Style="{DynamicResource ButtonStyle1}"/>
         <TextBlock Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap">
+            
 <Hyperlink NavigateUri="AuthPage.xaml">
             У вас уже есть аккаунт? Войти!
         </Hyperlink>

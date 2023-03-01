@@ -23,10 +23,52 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
+            
+            <TextBlock Grid.Column="0" Text="≡" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="50" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"/>
             <Image Grid.Column="2" Margin="15" Source="/View/Picture/logo.png" />
-            <TextBlock Grid.Column="1" Text="Профиль" TextWrapping="Wrap"  VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="22"/>
-            <TextBlock Grid.Column="0" Text="≡" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="50"/>
+            <TextBlock Grid.Column="1" Text="Главная" TextWrapping="Wrap"  VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="22"/>
+       
         </Grid>
-        
+
+        <!--<DataGrid Margin="10" x:Name="TableGrid" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkBlue" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="100" Binding="{Binding Path=ID}"/>
+                <DataGridTextColumn Header="Вид издления" Width="100" Binding="{Binding Path=Floor}"/>
+                <DataGridTextColumn Header="Упаковка" Width="80" Binding="{Binding Path=Got_Postr}"/>
+            </DataGrid.Columns>
+        </DataGrid>-->
+
+        <DataGrid Margin="5" x:Name="TableGrid" AutoGenerateColumns="False" Grid.Row="1" Grid.RowSpan="2" FontSize="15">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Изделие" Binding="{Binding Products.IdProduct}"/>
+                <DataGridTextColumn Header="Количество (шт. )" Binding="{Binding Count, StringFormat= - {0} шт}"/>
+                <DataGridTextColumn Header="Срок отгрузки" Binding="{Binding DateOtgruz}"/>
+            </DataGrid.Columns>
+
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding DateManufact, StringFormat=Дата изготовления: {0}}" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Price, StringFormat=Цена: {0}}" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding DateReal, StringFormat=Дата реализации: {0}}" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="{Binding Units.IdUnit, StringFormat=Единица измерения: {0}}" TextWrapping="Wrap" />
+                    </Grid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+
+        <Button Name="AddIzdBtn" Click="AddIzdBtn_Click"  Grid.Row="8" Content="Добавить изделие" FontSize="20" Style="{DynamicResource ButtonStyle1}"/>
+
     </Grid>
 </Page>

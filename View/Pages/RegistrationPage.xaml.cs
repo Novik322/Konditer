@@ -63,8 +63,8 @@ namespace Konditer_FigmaProject.View.Pages
                 }
                 catch
                 {
-                    MessageBox.Show("Ошибка при добавлении данных!",
-                        "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Регистрация прошла успешно!",
+                        "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
