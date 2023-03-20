@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище CondIzd_SamarinRModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+          </Key>
+          <Property Name="IdAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="IdPack" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdUnit" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DateManufact" Type="datetime" Nullable="false" />
+          <Property Name="DateReal" Type="datetime" Nullable="false" />
+          <Property Name="DateOtgruz" Type="datetime" Nullable="false" />
+          <Property Name="IdOptSalers" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dolznost">
+          <Key>
+            <PropertyRef Name="idDolznost" />
+          </Key>
+          <Property Name="idDolznost" Type="int" Nullable="false" />
+          <Property Name="nameDolznost" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OptSalers">
+          <Key>
+            <PropertyRef Name="IdOptSalers" />
+          </Key>
+          <Property Name="IdOptSalers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOptSalers" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="TypeOptSalers" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="NameProduct" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stuff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="permission" Type="int" Nullable="false" />
+          <Property Name="doljnsot" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeOptSalers">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Units">
+          <Key>
+            <PropertyRef Name="IdUnit" />
+          </Key>
+          <Property Name="IdUnit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameUnit" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewPack">
+          <Key>
+            <PropertyRef Name="IdPack" />
+          </Key>
+          <Property Name="IdPack" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePack" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Account_OptSalers">
+          <End Role="OptSalers" Type="Self.OptSalers" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptSalers">
+              <PropertyRef Name="IdOptSalers" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdOptSalers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Units">
+          <End Role="Units" Type="Self.Units" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="IdUnit" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_ViewPack">
+          <End Role="ViewPack" Type="Self.ViewPack" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ViewPack">
+              <PropertyRef Name="IdPack" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdPack" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OptSalers_TypeOptSalers">
+          <End Role="TypeOptSalers" Type="Self.TypeOptSalers" Multiplicity="1" />
+          <End Role="OptSalers" Type="Self.OptSalers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOptSalers">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="OptSalers">
+              <PropertyRef Name="TypeOptSalers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuff_Dolznost">
+          <End Role="Dolznost" Type="Self.Dolznost" Multiplicity="1" />
+          <End Role="Stuff" Type="Self.Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznost">
+              <PropertyRef Name="idDolznost" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="doljnsot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CondIzd_SamarinRModel1Container">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolznost" EntityType="Self.Dolznost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OptSalers" EntityType="Self.OptSalers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stuff" EntityType="Self.Stuff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOptSalers" EntityType="Self.TypeOptSalers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewPack" EntityType="Self.ViewPack" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_OptSalers" Association="Self.FK_Account_OptSalers">
+            <End Role="OptSalers" EntitySet="OptSalers" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Products" Association="Self.FK_Account_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Units" Association="Self.FK_Account_Units">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_ViewPack" Association="Self.FK_Account_ViewPack">
+            <End Role="ViewPack" EntitySet="ViewPack" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OptSalers_TypeOptSalers" Association="Self.FK_OptSalers_TypeOptSalers">
+            <End Role="TypeOptSalers" EntitySet="TypeOptSalers" />
+            <End Role="OptSalers" EntitySet="OptSalers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuff_Dolznost" Association="Self.FK_Stuff_Dolznost">
+            <End Role="Dolznost" EntitySet="Dolznost" />
+            <End Role="Stuff" EntitySet="Stuff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CondIzd_SamarinRModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+          </Key>
+          <Property Name="IdAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="IdPack" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUnit" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DateManufact" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateReal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOtgruz" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdOptSalers" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OptSalers" Relationship="Self.FK_Account_OptSalers" FromRole="Account" ToRole="OptSalers" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Account_Products" FromRole="Account" ToRole="Products" />
+          <NavigationProperty Name="Units" Relationship="Self.FK_Account_Units" FromRole="Account" ToRole="Units" />
+          <NavigationProperty Name="ViewPack" Relationship="Self.FK_Account_ViewPack" FromRole="Account" ToRole="ViewPack" />
+        </EntityType>
+        <EntityType Name="Dolznost">
+          <Key>
+            <PropertyRef Name="idDolznost" />
+          </Key>
+          <Property Name="idDolznost" Type="Int32" Nullable="false" />
+          <Property Name="nameDolznost" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Stuff" Relationship="Self.FK_Stuff_Dolznost" FromRole="Dolznost" ToRole="Stuff" />
+        </EntityType>
+        <EntityType Name="OptSalers">
+          <Key>
+            <PropertyRef Name="IdOptSalers" />
+          </Key>
+          <Property Name="IdOptSalers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOptSalers" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeOptSalers" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_OptSalers" FromRole="OptSalers" ToRole="Account" />
+          <NavigationProperty Name="TypeOptSalers1" Relationship="Self.FK_OptSalers_TypeOptSalers" FromRole="OptSalers" ToRole="TypeOptSalers" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="NameProduct" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_Products" FromRole="Products" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Stuff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="permission" Type="Int32" Nullable="false" />
+          <Property Name="doljnsot" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dolznost" Relationship="Self.FK_Stuff_Dolznost" FromRole="Stuff" ToRole="Dolznost" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeOptSalers">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OptSalers" Relationship="Self.FK_OptSalers_TypeOptSalers" FromRole="TypeOptSalers" ToRole="OptSalers" />
+        </EntityType>
+        <EntityType Name="Units">
+          <Key>
+            <PropertyRef Name="IdUnit" />
+          </Key>
+          <Property Name="IdUnit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_Units" FromRole="Units" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="ViewPack">
+          <Key>
+            <PropertyRef Name="IdPack" />
+          </Key>
+          <Property Name="IdPack" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePack" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_ViewPack" FromRole="ViewPack" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK_Account_OptSalers">
+          <End Role="OptSalers" Type="Self.OptSalers" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptSalers">
+              <PropertyRef Name="IdOptSalers" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdOptSalers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Units">
+          <End Role="Units" Type="Self.Units" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units">
+              <PropertyRef Name="IdUnit" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_ViewPack">
+          <End Role="ViewPack" Type="Self.ViewPack" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ViewPack">
+              <PropertyRef Name="IdPack" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdPack" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuff_Dolznost">
+          <End Role="Dolznost" Type="Self.Dolznost" Multiplicity="1" />
+          <End Role="Stuff" Type="Self.Stuff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznost">
+              <PropertyRef Name="idDolznost" />
+            </Principal>
+            <Dependent Role="Stuff">
+              <PropertyRef Name="doljnsot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OptSalers_TypeOptSalers">
+          <End Role="TypeOptSalers" Type="Self.TypeOptSalers" Multiplicity="1" />
+          <End Role="OptSalers" Type="Self.OptSalers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOptSalers">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="OptSalers">
+              <PropertyRef Name="TypeOptSalers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CondIzd_SamarinREntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Dolznost" EntityType="Self.Dolznost" />
+          <EntitySet Name="OptSalers" EntityType="Self.OptSalers" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Stuff" EntityType="Self.Stuff" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeOptSalers" EntityType="Self.TypeOptSalers" />
+          <EntitySet Name="Units" EntityType="Self.Units" />
+          <EntitySet Name="ViewPack" EntityType="Self.ViewPack" />
+          <AssociationSet Name="FK_Account_OptSalers" Association="Self.FK_Account_OptSalers">
+            <End Role="OptSalers" EntitySet="OptSalers" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Products" Association="Self.FK_Account_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Units" Association="Self.FK_Account_Units">
+            <End Role="Units" EntitySet="Units" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_ViewPack" Association="Self.FK_Account_ViewPack">
+            <End Role="ViewPack" EntitySet="ViewPack" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuff_Dolznost" Association="Self.FK_Stuff_Dolznost">
+            <End Role="Dolznost" EntitySet="Dolznost" />
+            <End Role="Stuff" EntitySet="Stuff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OptSalers_TypeOptSalers" Association="Self.FK_OptSalers_TypeOptSalers">
+            <End Role="TypeOptSalers" EntitySet="TypeOptSalers" />
+            <End Role="OptSalers" EntitySet="OptSalers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CondIzd_SamarinRModel1Container" CdmEntityContainer="CondIzd_SamarinREntities1">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="IdPack" ColumnName="IdPack" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="IdUnit" ColumnName="IdUnit" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DateManufact" ColumnName="DateManufact" />
+                <ScalarProperty Name="DateReal" ColumnName="DateReal" />
+                <ScalarProperty Name="DateOtgruz" ColumnName="DateOtgruz" />
+                <ScalarProperty Name="IdOptSalers" ColumnName="IdOptSalers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolznost">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.Dolznost">
+              <MappingFragment StoreEntitySet="Dolznost">
+                <ScalarProperty Name="idDolznost" ColumnName="idDolznost" />
+                <ScalarProperty Name="nameDolznost" ColumnName="nameDolznost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OptSalers">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.OptSalers">
+              <MappingFragment StoreEntitySet="OptSalers">
+                <ScalarProperty Name="IdOptSalers" ColumnName="IdOptSalers" />
+                <ScalarProperty Name="NameOptSalers" ColumnName="NameOptSalers" />
+                <ScalarProperty Name="TypeOptSalers" ColumnName="TypeOptSalers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stuff">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.Stuff">
+              <MappingFragment StoreEntitySet="Stuff">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="permission" ColumnName="permission" />
+                <ScalarProperty Name="doljnsot" ColumnName="doljnsot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOptSalers">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.TypeOptSalers">
+              <MappingFragment StoreEntitySet="TypeOptSalers">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.Units">
+              <MappingFragment StoreEntitySet="Units">
+                <ScalarProperty Name="IdUnit" ColumnName="IdUnit" />
+                <ScalarProperty Name="NameUnit" ColumnName="NameUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewPack">
+            <EntityTypeMapping TypeName="CondIzd_SamarinRModel1.ViewPack">
+              <MappingFragment StoreEntitySet="ViewPack">
+                <ScalarProperty Name="IdPack" ColumnName="IdPack" />
+                <ScalarProperty Name="NamePack" ColumnName="NamePack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

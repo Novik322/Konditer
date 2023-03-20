@@ -40,7 +40,7 @@
 
         <DataGrid Margin="5" x:Name="TableGrid" AutoGenerateColumns="False" Grid.Row="1" Grid.RowSpan="2" FontSize="15">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Изделие" Binding="{Binding Products.IdProduct}"/>
+                <DataGridTextColumn Header="Изделие" Binding="{Binding Products.NameProduct}"/>
                 <DataGridTextColumn Header="Количество (шт. )" Binding="{Binding Count, StringFormat= - {0} шт}"/>
                 <DataGridTextColumn Header="Срок отгрузки" Binding="{Binding DateOtgruz}"/>
             </DataGrid.Columns>

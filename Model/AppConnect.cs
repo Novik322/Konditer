@@ -9,5 +9,6 @@ namespace Konditer_FigmaProject.Model
     public class AppConnect
     {
         public static CondIzd_SamarinREntities context = new CondIzd_SamarinREntities();
+        //public static CondIzd_SamarinREntities1 context = new CondIzd_SamarinREntities1();
     }
 }

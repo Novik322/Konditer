@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Konditer_FigmaProject.View.Pages
 {
@@ -25,6 +27,7 @@ namespace Konditer_FigmaProject.View.Pages
         public AuthPage()
         {
             InitializeComponent();
+
         }
         private void Enter()
         {
@@ -33,8 +36,9 @@ namespace Konditer_FigmaProject.View.Pages
                 var user = AppConnect.context.Stuff.FirstOrDefault(i => i.email == emailTb.Text && i.password == passPb.Password);
                 if (user == null)
                 {
-                    MessageBox.Show("Данного пользователя не существует!", "Ошибка при авторизации!",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    PloxPassTbl.Text = "Данные введены некорректно";
+                    passPb.BorderBrush = Brushes.Red;
+                    emailTb.BorderBrush = Brushes.Red;
                 }
                 else
                 {

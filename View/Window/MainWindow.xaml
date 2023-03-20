@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Konditer_FigmaProject"
         mc:Ignorable="d"
         Title="Кондитерская" Height="800" Width="420" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent"
-        WindowStyle="None" ResizeMode="NoResize" Topmost="True">
+        WindowStyle="None" ResizeMode="NoResize">
 
     <Grid>
         <Image  Grid.Row="1" Grid.Column="1" Source="/View/Picture/testphoto.png" Stretch="Fill" />

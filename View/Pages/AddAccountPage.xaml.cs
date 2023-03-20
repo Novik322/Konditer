@@ -70,6 +70,7 @@ namespace Konditer_FigmaProject.View.Pages
 
                 MessageBox.Show("Данные успешно добавлены в базу данных!", "Уведомление",
                        MessageBoxButton.OK, MessageBoxImage.Information);
+                AppFrame.Main.Navigate(new WelcomePage());
             }
         }
 

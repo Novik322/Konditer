@@ -1,4 +1,5 @@
-﻿using Konditer_FigmaProject.Model;
+﻿using Konditer_FigmaProject.AppData;
+using Konditer_FigmaProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +32,23 @@ namespace Konditer_FigmaProject.View.Pages
         {
             if (string.IsNullOrEmpty(emailTb.Text) && string.IsNullOrEmpty(phoneTb.Text) && string.IsNullOrEmpty(PassTb1.Text) && string.IsNullOrEmpty(PassTb2.Password) && string.IsNullOrEmpty(firstTb.Text) && string.IsNullOrEmpty(lastTb.Text))
             {
-                MessageBox.Show("Не все поля заполнены!");
+                MessageBox.Show("Подчеркнутые поля введены некорректно!!", "Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+                emailTb.BorderBrush = Brushes.Red;
+                phoneTb.BorderBrush = Brushes.Red;
+                lastTb.BorderBrush = Brushes.Red;
+                firstTb.BorderBrush = Brushes.Red;
+                PassTb1.BorderBrush = Brushes.Red;
+                PassTb2.BorderBrush = Brushes.Red;
             }
             else if (string.IsNullOrEmpty(emailTb.Text))
             {
-                MessageBox.Show("Не все поля заполнены!");
+                MessageBox.Show("Подчеркнутые поля введены некорректно!!");
+                emailTb.BorderBrush = Brushes.Red;
+                phoneTb.BorderBrush = Brushes.Red;
+                lastTb.BorderBrush = Brushes.Red;
+                firstTb.BorderBrush = Brushes.Red;
+                PassTb1.BorderBrush = Brushes.Red;
+                PassTb2.BorderBrush = Brushes.Red;
             }
             else
             {
@@ -58,13 +71,16 @@ namespace Konditer_FigmaProject.View.Pages
                     };
                     AppConnect.context.Stuff.Add(userObj);
                     AppConnect.context.SaveChanges();
-                    MessageBox.Show("Регистрация прошла успешно!",
+                    MessageBox.Show("Регистрация прошла успешно! Для подтверждения почты перейдите по ссылке!!",
                         "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    AppFrame.Main.Navigate(new AuthPage());
+
                 }
                 catch
                 {
-                    MessageBox.Show("Регистрация прошла успешно!",
-                        "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Регистрация прошла успешно! Для подтверждения почты перейдите по ссылке!!",
+     "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    AppFrame.Main.Navigate(new AuthPage());
                 }
             }
         }
